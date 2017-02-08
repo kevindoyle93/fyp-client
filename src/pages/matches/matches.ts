@@ -40,11 +40,11 @@ export class MatchesPage {
     ]
   };
 
-  private onMatchClicked = (match: any) => {
+  onMatchClicked = (match: any) => {
     console.log(match);
   };
 
-  private onNewMatchClicked = () => {
+  onNewMatchClicked = () => {
     console.log('New match');
   }
 
