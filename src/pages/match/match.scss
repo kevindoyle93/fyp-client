@@ -3,6 +3,7 @@ page-match {
   .match-container {
     background-color: #FFFFFF;
     padding: 16px;
+    margin-bottom: 8px;
     text-align: center;
 
     .match-score-container {
@@ -55,5 +56,11 @@ page-match {
       font-size: 0.8em;
       margin-bottom: 16px;
     }
+  }
+
+  ion-item-divider {
+    text-align: center;
+    color: white !important;
+    background-color: #4CAF50 !important;
   }
 }
