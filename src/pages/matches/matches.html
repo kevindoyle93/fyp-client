@@ -5,13 +5,16 @@
 </ion-header>
 
 <ion-content class="page-content">
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list no-lines>
+    <div id="matches-list" ion-item *ngFor="let match of matches" (click)="onMatchClicked(match)">
+      <table id="score-container">
+        <tr>
+          <td id="home-team">{{match.homeTeam}}</td>
+          <td id="score">{{match.fullTimeHomeGoals}} - {{match.fullTimeAwayGoals}}</td>
+          <td id="away-team">{{match.awayTeam}}</td>
+        </tr>
+      </table>
+      <div id="date">{{match.date}}</div>
+    </div>
+  </ion-list>
 </ion-content>
