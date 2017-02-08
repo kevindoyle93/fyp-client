@@ -2,6 +2,15 @@ page-matches {
 
 }
 
+ion-navbar > div {
+  background-color: #4CAF50 !important;
+}
+
+ion-title > div {
+  color: white !important;
+  text-align: center;
+}
+
 #matches-list {
   padding-top: 12px;
   padding-bottom: 8px;
