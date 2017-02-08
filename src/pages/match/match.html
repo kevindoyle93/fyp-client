@@ -14,5 +14,12 @@
       </tr>
     </table>
     <div id="date">{{match.getDateString()}}</div>
+    <table class="match-stat-container">
+      <tr class="stat" *ngFor="let stat of match.formatStats()">
+        <td class="left-col">{{stat.home}}</td>
+        <td class="stat">{{stat.name}}</td>
+        <td class="right-col">{{stat.away}}</td>
+      </tr>
+    </table>
   </div>
 </ion-content>

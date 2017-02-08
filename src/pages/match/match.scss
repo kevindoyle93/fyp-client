@@ -7,7 +7,10 @@ page-match {
 
     .match-stat-container {
       width: 100%;
-      margin-bottom: 8px;
+
+      tr > td {
+        padding-bottom: 12px;
+      }
 
       .left-col {
         width: 40%;
@@ -25,6 +28,7 @@ page-match {
 
     #date {
       font-size: 0.8em;
+      margin-bottom: 16px;
     }
   }
 }

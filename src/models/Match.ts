@@ -10,6 +10,8 @@ export class Match {
   awayPossession: number;
   homeTotalShots: number;
   awayTotalShots: number;
+  homeShotsOnTarget: number;
+  awayShotsOnTarget: number;
   homeCorners: number;
   awayCorners: number;
   homeFouls: number;
@@ -29,5 +31,17 @@ export class Match {
 
   getDateString = () => {
     return this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
-  }
+  };
+
+  formatStats = () => {
+    return [
+      {home: this.homePossession, name: 'Possession', away: this.awayPossession},
+      {home: this.homeTotalShots, name: 'Total Shots', away: this.awayTotalShots},
+      {home: this.homeShotsOnTarget, name: 'Shots on Target', away: this.awayShotsOnTarget},
+      {home: this.homeCorners, name: 'Corners', away: this.awayCorners},
+      {home: this.homeFouls, name: 'Fouls', away: this.awayFouls},
+      {home: this.homeYellowCards, name: 'Yellow Cards', away: this.awayYellowCards},
+      {home: this.homeRedCards, name: 'Red Cards', away: this.awayRedCards},
+    ]
+  };
 }
