@@ -5,6 +5,7 @@ import { TacticsPage } from '../pages/tactics/tactics';
 import { MatchesPage } from '../pages/matches/matches';
 import { TabsPage } from '../pages/tabs/tabs';
 import {MatchPage} from "../pages/match/match";
+import {NewMatchPage} from "../pages/new-match/new-match";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {MatchPage} from "../pages/match/match";
     TacticsPage,
     MatchesPage,
     TabsPage,
-    MatchPage
+    MatchPage,
+    NewMatchPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -26,7 +28,8 @@ import {MatchPage} from "../pages/match/match";
     TacticsPage,
     MatchesPage,
     TabsPage,
-    MatchPage
+    MatchPage,
+    NewMatchPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
