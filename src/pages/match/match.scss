@@ -1,28 +1,30 @@
-#match-container {
-  background-color: #FFFFFF;
-  padding: 8px;
-  text-align: center;
-}
+page-match {
 
-#score-container {
-  width: 100%;
-  margin-bottom: 8px;
-}
+  .match-container {
+    background-color: #FFFFFF;
+    padding: 8px;
+    text-align: center;
 
-#score-container #home-team {
-  width: 40%;
-  text-align: left;
-}
+    .match-stat-container {
+      width: 100%;
+      margin-bottom: 8px;
 
-#score-container #score {
-  width: 20%;
-}
+      .left-col {
+        width: 40%;
+        text-align: left;
+      }
 
-#score-container #away-team {
-  width: 40%;
-  text-align: right;
-}
+      .stat {
+        width: 20%;
+      }
 
-#match-container #date {
-  font-size: 0.8em;
+      .right-col {
+        text-align: right;
+      }
+    }
+
+    #date {
+      font-size: 0.8em;
+    }
+  }
 }

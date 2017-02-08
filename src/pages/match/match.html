@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content class="page-content">
-  <div id="match-container">
-    <table id="score-container">
+  <div class="match-container">
+    <table class="match-stat-container">
       <tr>
-        <td id="home-team">{{match.homeTeam}}</td>
-        <td id="score">{{match.fullTimeHomeGoals}} - {{match.fullTimeAwayGoals}}</td>
-        <td id="away-team">{{match.awayTeam}}</td>
+        <td class="left-col">{{match.homeTeam}}</td>
+        <td class="stat">{{match.fullTimeHomeGoals}} - {{match.fullTimeAwayGoals}}</td>
+        <td class="right-col">{{match.awayTeam}}</td>
       </tr>
     </table>
     <div id="date">{{match.getDateString()}}</div>
