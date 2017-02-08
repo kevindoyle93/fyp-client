@@ -23,8 +23,13 @@ export class MatchPage {
     this.tactics = [
       new TacticalAdvice(
         'Decrease Shots on Target Against',
-        'Decreasing your opponents shots on target by 2 would have increased the probability of a victory from 42% to 71%',
+        'Decreasing your opponent\'s shots on target by 2 would have increased the probability of a victory from 42% to 71%',
         ['1 v 1 Defending the Dribble', 'High Pressing']
+      ),
+      new TacticalAdvice(
+        'Increase Shots on Target',
+        'Increasing your shots on target by 1 would have increased the probability of a victory from 68% to 78%',
+        ['Diagonal Layoff', '1 Touch Combinations']
       ),
     ]
   }
