@@ -42,6 +42,10 @@ export class MatchesPage {
 
   private onMatchClicked = (match: any) => {
     console.log(match);
+  };
+
+  private onNewMatchClicked = () => {
+    console.log('New match');
   }
 
 }
