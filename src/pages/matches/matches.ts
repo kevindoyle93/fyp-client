@@ -19,27 +19,9 @@ export class MatchesPage {
   private fetchMatches = () => {
     this.matches = [
       new Match('Man United', 'Man City', 2, 2, new Date(2017, 2, 24)),
-      /*{
-        homeTeam: 'Man United',
-        awayTeam: 'Man City',
-        fullTimeHomeGoals: 2,
-        fullTimeAwayGoals: 2,
-        date: '24/02/2017'
-      },
-      {
-        homeTeam: 'Chelsea',
-        awayTeam: 'Man United',
-        fullTimeHomeGoals: 1,
-        fullTimeAwayGoals: 0,
-        date: '17/02/2017'
-      },
-      {
-        homeTeam: 'West Ham',
-        awayTeam: 'Man United',
-        fullTimeHomeGoals: 0,
-        fullTimeAwayGoals: 2,
-        date: '14/02/2017'
-      }*/
+      new Match('Chelsea', 'Man United', 1, 0, new Date(2017, 2, 17)),
+      new Match('West Ham', 'Man United', 0, 2, new Date(2017, 2, 14)),
+      new Match('Man United', 'Stoke City', 3, 1, new Date(2017, 2, 9)),
     ]
   };
 
