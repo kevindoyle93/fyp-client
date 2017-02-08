@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Match</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="page-content">
+  <div id="matches-list" ion-item>
+    <table id="score-container">
+      <tr>
+        <td id="home-team">{{match.homeTeam}}</td>
+        <td id="score">{{match.fullTimeHomeGoals}} - {{match.fullTimeAwayGoals}}</td>
+        <td id="away-team">{{match.awayTeam}}</td>
+      </tr>
+    </table>
+    <div id="date">{{match.getDateString()}}</div>
+  </div>
+</ion-content>

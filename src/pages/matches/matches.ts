@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import {Match} from '../../models/Match';
+import {MatchPage} from "../match/match";
 
 @Component({
   selector: 'page-matches',
-  templateUrl: 'matches.html'
+  templateUrl: 'matches.html',
+  entryComponents: [MatchPage]
 })
 export class MatchesPage {
 
@@ -26,7 +28,9 @@ export class MatchesPage {
   };
 
   onMatchClicked = (match: any) => {
-    console.log(match);
+    this.navCtrl.push(MatchPage, {
+      match: match
+    });
   };
 
   onNewMatchClicked = () => {

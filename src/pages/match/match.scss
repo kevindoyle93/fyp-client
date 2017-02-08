@@ -1,0 +1,46 @@
+page-matches {
+
+}
+
+ion-navbar > div {
+  background-color: #4CAF50 !important;
+}
+
+ion-title > div {
+  color: white !important;
+  text-align: center;
+}
+
+#matches-list {
+  padding-top: 12px;
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 5px solid #EDEDED;
+}
+
+#matches-list:last-child {
+  border-bottom: none;
+}
+
+#score-container {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+#score-container #home-team {
+  width: 40%;
+  text-align: left;
+}
+
+#score-container #score {
+  width: 20%;
+}
+
+#score-container #away-team {
+  width: 40%;
+  text-align: right;
+}
+
+#matches-list #date {
+  font-size: 0.8em;
+}
