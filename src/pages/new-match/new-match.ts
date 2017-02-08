@@ -33,20 +33,4 @@ export class NewMatchPage {
       }
     }
   };
-
-  onHomeGoalsChange = (amount: number) => {this.match.fullTimeHomeGoals += amount;};
-  onAwayGoalsChange = (amount: number) => {this.match.fullTimeAwayGoals += amount;};
-  onHomeTotalShotsChange = (amount: number) => {this.match.homeTotalShots += amount;};
-  onAwayTotalShotsChange = (amount: number) => {this.match.awayTotalShots += amount;};
-  onHomeShotsOnTargetChange = (amount: number) => {this.match.homeShotsOnTarget += amount;};
-  onAwayShotsOnTargetChange = (amount: number) => {this.match.awayShotsOnTarget += amount;};
-  onHomeCornersChange = (amount: number) => {this.match.homeCorners += amount;};
-  onAwayCornersChange = (amount: number) => {this.match.awayCorners += amount;};
-  onHomeFoulsChange = (amount: number) => {this.match.homeFouls += amount;};
-  onAwayFoulsChange = (amount: number) => {this.match.awayFouls += amount;};
-  onHomeYellowCardsChange = (amount: number) => {this.match.homeYellowCards += amount;};
-  onAwayYellowCardsChange = (amount: number) => {this.match.awayYellowCards += amount;};
-  onHomeRedCardsChange = (amount: number) => {this.match.homeRedCards += amount;};
-  onAwayRedCardsChange = (amount: number) => {this.match.awayRedCards += amount;};
-
 }
