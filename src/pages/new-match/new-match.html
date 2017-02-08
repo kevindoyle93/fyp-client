@@ -17,127 +17,127 @@
       <div id="date">{{match.getDateString()}}</div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeGoalsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.fullTimeHomeGoals}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeGoalsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Goals</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayGoalsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.fullTimeAwayGoals}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayGoalsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeTotalShotsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeTotalShots}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeTotalShotsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Total Shots</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayTotalShotsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayTotalShots}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayTotalShotsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeShotsOnTargetChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeShotsOnTarget}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeShotsOnTargetChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Shots on Target</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayShotsOnTargetChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayShotsOnTarget}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayShotsOnTargetChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeCornersChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeCorners}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeCornersChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Corners</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayCornersChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayCorners}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayCornersChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeFoulsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeFouls}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeFoulsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Fouls</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayFoulsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayFouls}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayFoulsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeYellowCardsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeYellowCards}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeYellowCardsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Yellow Cards</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayYellowCardsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayYellowCards}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayYellowCardsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
 
       <div class="stat-container">
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeRedCardsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.homeRedCards}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onHomeRedCardsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
         <div class="stat-name">Red Cards</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayRedCardsChange(1)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
         <div>{{match.awayRedCards}}</div>
-        <button ion-button clear>
+        <button ion-button clear (click)="onAwayRedCardsChange(-1)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </div>
