@@ -35,7 +35,7 @@ export class Match {
 
   formatStats = () => {
     return [
-      {home: this.homePossession, name: 'Possession', away: this.awayPossession},
+      {home: '' + this.homePossession + '%', name: 'Possession', away: '' + this.awayPossession + '%'},
       {home: this.homeTotalShots, name: 'Total Shots', away: this.awayTotalShots},
       {home: this.homeShotsOnTarget, name: 'Shots on Target', away: this.awayShotsOnTarget},
       {home: this.homeCorners, name: 'Corners', away: this.awayCorners},
