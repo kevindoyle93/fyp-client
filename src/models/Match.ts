@@ -21,12 +21,29 @@ export class Match {
   homeRedCards: number;
   awayRedCards: number;
 
-  constructor(homeTeam: string, awayTeam: string, fullTimeHomeScore: number, fullTimeAwayScore: number, date: Date) {
+
+  constructor(homeTeam: string, awayTeam: string, date: Date, fullTimeHomeGoals: number, fullTimeAwayGoals: number, halfTimeHomeGoals: number, halfTimeAwayGoals: number, homePossession: number, awayPossession: number, homeTotalShots: number, awayTotalShots: number, homeShotsOnTarget: number, awayShotsOnTarget: number, homeCorners: number, awayCorners: number, homeFouls: number, awayFouls: number, homeYellowCards: number, awayYellowCards: number, homeRedCards: number, awayRedCards: number) {
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
-    this.fullTimeHomeGoals = fullTimeHomeScore;
-    this.fullTimeAwayGoals = fullTimeAwayScore;
     this.date = date;
+    this.fullTimeHomeGoals = fullTimeHomeGoals;
+    this.fullTimeAwayGoals = fullTimeAwayGoals;
+    this.halfTimeHomeGoals = halfTimeHomeGoals;
+    this.halfTimeAwayGoals = halfTimeAwayGoals;
+    this.homePossession = homePossession;
+    this.awayPossession = awayPossession;
+    this.homeTotalShots = homeTotalShots;
+    this.awayTotalShots = awayTotalShots;
+    this.homeShotsOnTarget = homeShotsOnTarget;
+    this.awayShotsOnTarget = awayShotsOnTarget;
+    this.homeCorners = homeCorners;
+    this.awayCorners = awayCorners;
+    this.homeFouls = homeFouls;
+    this.awayFouls = awayFouls;
+    this.homeYellowCards = homeYellowCards;
+    this.awayYellowCards = awayYellowCards;
+    this.homeRedCards = homeRedCards;
+    this.awayRedCards = awayRedCards;
   }
 
   getDateString = () => {

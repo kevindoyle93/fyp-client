@@ -20,10 +20,10 @@ export class MatchesPage {
 
   private fetchMatches = () => {
     this.matches = [
-      new Match('Man United', 'Man City', 2, 2, new Date(2017, 2, 24)),
-      new Match('Chelsea', 'Man United', 1, 0, new Date(2017, 2, 17)),
-      new Match('West Ham', 'Man United', 0, 2, new Date(2017, 2, 14)),
-      new Match('Man United', 'Stoke City', 3, 1, new Date(2017, 2, 9)),
+      new Match('Man United', 'Man City', new Date(2017, 2, 24), 2, 2, 1, 0, 50, 50, 11, 10, 6, 7, 3, 1, 6, 9, 1, 2, 0, 0),
+      new Match('Chelsea', 'Man United', new Date(2017, 2, 17), 1, 0, 0, 0, 50, 50, 11, 10, 6, 7, 3, 1, 6, 9, 1, 2, 0, 0),
+      new Match('West Ham', 'Man United', new Date(2017, 2, 14), 0, 2, 1, 0, 50, 50, 11, 10, 6, 7, 3, 1, 6, 9, 1, 2, 0, 0),
+      new Match('Man United', 'Stoke City', new Date(2017, 2, 9), 3, 1, 1, 0, 50, 50, 11, 10, 6, 7, 3, 1, 6, 9, 1, 2, 0, 0),
     ]
   };
 
