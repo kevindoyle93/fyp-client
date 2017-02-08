@@ -3,7 +3,6 @@ page-match {
   .match-container {
     background-color: #FFFFFF;
     padding: 16px;
-    margin-bottom: 8px;
     text-align: center;
 
     .match-score-container {
@@ -62,5 +61,21 @@ page-match {
     text-align: center;
     color: white !important;
     background-color: #4CAF50 !important;
+    margin: 8px 0;
+  }
+
+  ion-card {
+    .divider {
+      min-width: 200px;
+      width: 75%;
+      max-height: 1px;
+      min-height: 0.5px;
+      margin: 0 auto;
+      background-color: gainsboro;
+    }
+  }
+
+  ion-card-header {
+    text-align: center;
   }
 }
