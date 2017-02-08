@@ -10,16 +10,16 @@
       <table class="match-score-container">
         <tr>
           <td class="left-col">{{match.homeTeam}}</td>
-          <td class="stat">{{match.fullTimeHomeGoals}} - {{match.fullTimeAwayGoals}}</td>
+          <td class="stat">{{match.stats[0].homeValue}} - {{match.stats[0].awayValue}}</td>
           <td class="right-col">{{match.awayTeam}}</td>
         </tr>
       </table>
       <div id="date">{{match.getDateString()}}</div>
       <table class="match-stat-container">
-        <tr class="stat" *ngFor="let stat of match.formatStats()">
-          <td class="left-col">{{stat.home}}</td>
-          <td class="stat">{{stat.name}}</td>
-          <td class="right-col">{{stat.away}}</td>
+        <tr class="stat" *ngFor="let stat of match.stats">
+          <td class="left-col">{{stat.homeValue}}</td>
+          <td class="stat">{{stat.displayName}}</td>
+          <td class="right-col">{{stat.awayValue}}</td>
         </tr>
       </table>
     </div>

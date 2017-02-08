@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {NavController} from 'ionic-angular';
 
 import {Match} from '../../models/Match';
+import {Stat} from "../../models/Stat";
 
 @Component({
   selector: 'page-new-match',
@@ -20,6 +21,18 @@ export class NewMatchPage {
       0, 0, 0, 0, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     );
   }
+
+  onStatChange = (amount: number, team: number, stat: Stat) => {
+    if (team === 0) {
+      if (amount === 1 || (amount === -1 && stat.homeValue > 0)) {
+        stat.homeValue += amount;
+      }
+    } else if (team === 1) {
+      if (amount === 1 || (amount === -1 && stat.awayValue > 0)) {
+        stat.awayValue += amount;
+      }
+    }
+  };
 
   onHomeGoalsChange = (amount: number) => {this.match.fullTimeHomeGoals += amount;};
   onAwayGoalsChange = (amount: number) => {this.match.fullTimeAwayGoals += amount;};
