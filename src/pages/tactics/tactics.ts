@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import {TacticalAdvice} from "../../models/TacticalAdvice";
+import {TacticalAdvice} from "../../api/models/TacticalAdvice";
 
 @Component({
   selector: 'page-tactics',

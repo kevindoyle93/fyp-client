@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import {NavController, NavParams} from 'ionic-angular';
 
-import {Match} from '../../models/Match';
-import {TacticalAdvice} from "../../models/TacticalAdvice";
+import {Match} from '../../api/models/Match';
+import {TacticalAdvice} from "../../api/models/TacticalAdvice";
 
 @Component({
   selector: 'page-match',

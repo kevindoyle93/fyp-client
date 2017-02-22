@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import {Match} from '../../models/Match';
+import {Match} from '../../api/models/Match';
 import {MatchPage} from "../match/match";
 import {NewMatchPage} from "../new-match/new-match";
 
