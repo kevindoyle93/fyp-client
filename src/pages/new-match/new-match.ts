@@ -14,12 +14,7 @@ export class NewMatchPage {
   match: Match;
 
   constructor(public navCtrl: NavController) {
-    this.match = new Match(
-      'Man United',
-      'Liverpool',
-      new Date(),
-      0, 0, 0, 0, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    );
+    this.match = Match.createBlank();
   }
 
   onStatChange = (amount: number, team: number, stat: Stat) => {
