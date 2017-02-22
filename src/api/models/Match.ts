@@ -49,7 +49,7 @@ export class Match {
     return this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
   };
 
-  getStatsForNewMatch = () => {
+  getIntegerCountStats = () => {
     let matchStats = [];
 
     for(let i = 0; i < this.stats.length; i++) {

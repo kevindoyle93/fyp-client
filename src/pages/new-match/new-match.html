@@ -26,7 +26,7 @@
       </table>
       <div id="date">{{match.getDateString()}}</div>
 
-      <div class="stat-container" *ngFor="let stat of match.getStatsForNewMatch()">
+      <div class="stat-container" *ngFor="let stat of match.getIntegerCountStats()">
         <button ion-button clear (click)="onStatChange(1, 0, stat)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
