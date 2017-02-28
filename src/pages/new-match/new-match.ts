@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import {NavController} from 'ionic-angular';
 
-import {Match} from '../../models/Match';
-import {Stat} from "../../models/Stat";
+import {Match} from '../../api/models/Match';
+import {Stat} from "../../api/models/Stat";
 
 @Component({
   selector: 'page-new-match',
@@ -14,12 +14,7 @@ export class NewMatchPage {
   match: Match;
 
   constructor(public navCtrl: NavController) {
-    this.match = new Match(
-      'Man United',
-      'Liverpool',
-      new Date(),
-      0, 0, 0, 0, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    );
+    this.match = Match.createBlank();
   }
 
   onStatChange = (amount: number, team: number, stat: Stat) => {

@@ -9,14 +9,24 @@
     <div class="new-match-container">
       <table class="match-score-container">
         <tr>
-          <td class="left-col">{{match.homeTeam}}</td>
+          <td class="left-col">
+            <ion-item>
+              <ion-label floating>Home Team</ion-label>
+              <ion-input type="text" ngModel="{{match.homeTeam}}"></ion-input>
+            </ion-item>
+          </td>
           <td class="stat">{{match.stats[0].homeValue}} - {{match.stats[0].awayValue}}</td>
-          <td class="right-col">{{match.awayTeam}}</td>
+          <td class="right-col">
+            <ion-item>
+              <ion-label floating>Away Team</ion-label>
+              <ion-input type="text" ngModel="{{match.awayTeam}}"></ion-input>
+            </ion-item>
+          </td>
         </tr>
       </table>
       <div id="date">{{match.getDateString()}}</div>
 
-      <div class="stat-container" *ngFor="let stat of match.getStatsForNewMatch()">
+      <div class="stat-container" *ngFor="let stat of match.getIntegerCountStats()">
         <button ion-button clear (click)="onStatChange(1, 0, stat)">
           <ion-icon name="arrow-round-up"></ion-icon>
         </button>
