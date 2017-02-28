@@ -1,7 +1,7 @@
 export class TacticalAdvice {
   title: string;
   message: string;
-  drills: Array<string>;
+  drills: Array<any>;
 
 
   constructor(title: string, message: string, drills: Array<string>) {

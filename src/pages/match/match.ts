@@ -22,10 +22,11 @@ export class MatchPage {
   }
 
   private fetchTactics = () => {
-    this.apiService.postMatch(Match.createBlank())
+    this.apiService.postMatch(Match.testApi())
       .subscribe(
-        tactics => {
-          this.tactics = tactics;
+        res => {
+          this.tactics = res['tactical_advice'];
+          console.log(res);
         },
         error => console.log(error)
       );

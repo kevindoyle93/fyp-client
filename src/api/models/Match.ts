@@ -59,5 +59,28 @@ export class Match {
     }
 
     return matchStats;
+  };
+
+  static testApi() {
+    return {
+      at_home: true,
+      winning_at_half_time: true,
+      half_time_goals: 1,
+      opp_half_time_goals: 0,
+      possession: 51.7,
+      opp_possession: 48.3,
+      total_shots: 12,
+      opp_total_shots: 8,
+      shots_on_target: 6,
+      opp_shots_on_target: 5,
+      corners: 4,
+      opp_corners: 3,
+      fouls: 9,
+      opp_fouls: 10,
+      yellow_cards: 2,
+      opp_yellow_cards: 1,
+      red_cards: 0,
+      opp_red_cards: 0
+    }
   }
 }
