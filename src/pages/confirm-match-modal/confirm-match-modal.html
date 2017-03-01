@@ -13,17 +13,25 @@
     <ion-item>
       <ion-label>My Team</ion-label>
       <ion-select>
-        <ion-option>{{match.homeTeam}}</ion-option>
-        <ion-option>{{match.awayTeam}}</ion-option>
+        <ion-option (ionSelect)="changeUsersTeam(true)">{{match.homeTeam}}</ion-option>
+        <ion-option (ionSelect)="changeUsersTeam(false)">{{match.awayTeam}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Start Time</ion-label>
       <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
     </ion-item>
+    <ion-item>
+      <ion-label>Half Time Home Goals</ion-label>
+      <ion-input text-right type="number" [(ngModel)]="match.stats[1].homeValue"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Half Time Away Goals</ion-label>
+      <ion-input text-right type="number" [(ngModel)]="match.stats[1].awayValue"></ion-input>
+    </ion-item>
   </ion-list>
   <div id="buttonsContainer">
-    <button ion-button color="primary" (click)="dismiss()">Submit</button>
+    <button ion-button color="primary" (click)="confirm()">Submit</button>
     <button ion-button color="danger" (click)="dismiss()">Cancel</button>
   </div>
 </ion-content>

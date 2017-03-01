@@ -9,6 +9,9 @@ import {Match} from "../../api/models/Match";
 export class ConfirmMatchModalPage {
 
   match: Match;
+  halfTimeHomeGoals: number = 0;
+  halfTimeAwayGoals: number = 0;
+  userTeamIsHomeTeam: boolean;
 
   constructor(public viewCtrl: ViewController, navParams: NavParams) {
     this.match = navParams.get('match');
@@ -19,8 +22,17 @@ export class ConfirmMatchModalPage {
     console.log('ionViewDidLoad ConfirmMatchModalPage');
   }
 
+  changeUsersTeam = (homeTeam: boolean) => {
+    this.userTeamIsHomeTeam = homeTeam;
+    console.log(this.userTeamIsHomeTeam);
+  };
+
   dismiss = () => {
     this.viewCtrl.dismiss();
-  }
+  };
+
+  confirm = () => {
+    console.log(Match.convertMatchForBackend(this.match, this.userTeamIsHomeTeam))
+  };
 
 }

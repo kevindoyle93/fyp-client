@@ -4,24 +4,6 @@ export class Match {
   awayTeam: string;
   date: Date;
   stats: Array<Stat>;
-  fullTimeHomeGoals: number;
-  fullTimeAwayGoals: number;
-  halfTimeHomeGoals: number;
-  halfTimeAwayGoals: number;
-  homePossession: number;
-  awayPossession: number;
-  homeTotalShots: number;
-  awayTotalShots: number;
-  homeShotsOnTarget: number;
-  awayShotsOnTarget: number;
-  homeCorners: number;
-  awayCorners: number;
-  homeFouls: number;
-  awayFouls: number;
-  homeYellowCards: number;
-  awayYellowCards: number;
-  homeRedCards: number;
-  awayRedCards: number;
 
 
   static createBlank() {
@@ -33,15 +15,15 @@ export class Match {
     this.awayTeam = awayTeam;
     this.date = date;
     this.stats = [
-      new Stat('Goals', '', fullTimeHomeGoals, fullTimeAwayGoals),
-      new Stat('Half Time Goals', '', halfTimeHomeGoals, halfTimeAwayGoals),
-      new Stat('Possession', '', homePossession, awayPossession),
-      new Stat('Total Shots', '', homeTotalShots, awayTotalShots),
-      new Stat('Shots on Target', '', homeShotsOnTarget, awayShotsOnTarget),
-      new Stat('Corners', '', homeCorners, awayCorners),
-      new Stat('Fouls', '', homeFouls, awayFouls),
-      new Stat('Yelllow Cards', '', homeYellowCards, awayYellowCards),
-      new Stat('Red Cards', '', homeRedCards, awayRedCards),
+      new Stat('Goals', 'full_time_goals', fullTimeHomeGoals, fullTimeAwayGoals),
+      new Stat('Half Time Goals', 'half_time_goals', halfTimeHomeGoals, halfTimeAwayGoals),
+      new Stat('Possession', 'possession', homePossession, awayPossession),
+      new Stat('Total Shots', 'total_shots', homeTotalShots, awayTotalShots),
+      new Stat('Shots on Target', 'shots_on_target', homeShotsOnTarget, awayShotsOnTarget),
+      new Stat('Corners', 'corners', homeCorners, awayCorners),
+      new Stat('Fouls', 'fouls', homeFouls, awayFouls),
+      new Stat('Yellow Cards', 'yellow_cards', homeYellowCards, awayYellowCards),
+      new Stat('Red Cards', 'red_cards', homeRedCards, awayRedCards),
     ];
   }
 
@@ -83,4 +65,33 @@ export class Match {
       opp_red_cards: 0
     }
   }
+
+  static convertMatchForBackend = (match: Match, userTeamIsHomeTeam: boolean) => {
+    console.log(match);
+    let formatted_match = {};
+    if (userTeamIsHomeTeam) {
+      formatted_match['at_home'] = true;
+      formatted_match['winning_at_half_time'] = match.stats[1].homeValue > match.stats[1].awayValue;
+
+      for (let i = 0; i <  match.stats.length; i++) {
+        let stat: Stat = match.stats[i];
+        formatted_match[stat.apiName] = match.stats[i].homeValue;
+        formatted_match['opp_' + stat.apiName] = match.stats[i].awayValue;
+      }
+
+      return formatted_match;
+
+    } else {
+      formatted_match['at_home'] = false;
+      formatted_match['winning_at_half_time'] = match.stats[1].awayValue > match.stats[1].homeValue;
+
+      for (let i = 0; i <  match.stats.length; i++) {
+        let stat: Stat = match.stats[i];
+        formatted_match[stat.apiName] = match.stats[i].awayValue;
+        formatted_match['opp_' + stat.apiName] = match.stats[i].homeValue;
+      }
+
+      return formatted_match;
+    }
+  };
 }
