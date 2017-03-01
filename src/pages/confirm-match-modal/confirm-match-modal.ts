@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
+import {Match} from "../../api/models/Match";
 
 @Component({
   selector: 'page-confirm-match-modal',
@@ -7,10 +8,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ConfirmMatchModalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  match: Match;
+
+  constructor(public viewCtrl: ViewController, navParams: NavParams) {
+    this.match = navParams.get('match');
+    console.log(this.match);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmMatchModalPage');
+  }
+
+  dismiss = () => {
+    this.viewCtrl.dismiss();
   }
 
 }

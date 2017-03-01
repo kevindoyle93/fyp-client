@@ -31,7 +31,7 @@ export class NewMatchPage {
   };
 
   showConfirmationModal = () => {
-    let confirmationModal = this.modalCtrl.create(ConfirmMatchModalPage, this.match);
+    let confirmationModal = this.modalCtrl.create(ConfirmMatchModalPage, {match: this.match});
     confirmationModal.present();
   };
 }

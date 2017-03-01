@@ -1,12 +1,29 @@
-<!--<ion-header>-->
-
-  <!--<ion-navbar>-->
-    <!--<ion-title>confirm-match-modal</ion-title>-->
-  <!--</ion-navbar>-->
-
-<!--</ion-header>-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Confirm Match
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 
 
 <ion-content padding>
-  <h1>Confirm match</h1>
+  <h2>Confirm match details</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>My Team</ion-label>
+      <ion-select>
+        <ion-option>{{match.homeTeam}}</ion-option>
+        <ion-option>{{match.awayTeam}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <div id="buttonsContainer">
+    <button ion-button color="primary" (click)="dismiss()">Submit</button>
+    <button ion-button color="danger" (click)="dismiss()">Cancel</button>
+  </div>
 </ion-content>
