@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import {NavController} from 'ionic-angular';
+import {NavController, ModalController} from 'ionic-angular';
 
 import {Match} from '../../api/models/Match';
 import {Stat} from "../../api/models/Stat";
+import {ConfirmMatchModalPage} from "../confirm-match-modal/confirm-match-modal";
 
 @Component({
   selector: 'page-new-match',
@@ -13,7 +14,7 @@ export class NewMatchPage {
 
   match: Match;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
     this.match = Match.createBlank();
   }
 
@@ -27,5 +28,10 @@ export class NewMatchPage {
         stat.awayValue += amount;
       }
     }
+  };
+
+  showConfirmationModal = () => {
+    let confirmationModal = this.modalCtrl.create(ConfirmMatchModalPage, this.match);
+    confirmationModal.present();
   };
 }
