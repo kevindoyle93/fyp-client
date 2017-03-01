@@ -28,11 +28,14 @@ export class ConfirmMatchModalPage {
   };
 
   dismiss = () => {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({confirmed: false});
   };
 
   confirm = () => {
-    console.log(Match.convertMatchForBackend(this.match, this.userTeamIsHomeTeam))
+    this.viewCtrl.dismiss({
+      confirmed: true,
+      matchData: Match.convertMatchForBackend(this.match, this.userTeamIsHomeTeam)
+    });
   };
 
 }

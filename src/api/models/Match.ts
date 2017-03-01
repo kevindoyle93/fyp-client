@@ -67,7 +67,6 @@ export class Match {
   }
 
   static convertMatchForBackend = (match: Match, userTeamIsHomeTeam: boolean) => {
-    console.log(match);
     let formatted_match = {};
     if (userTeamIsHomeTeam) {
       formatted_match['at_home'] = true;
