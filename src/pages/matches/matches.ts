@@ -21,6 +21,7 @@ export class MatchesPage {
 
   }
 
+  // Called when this page loads, including when returned to the top of the view stack
   ionViewDidEnter() {
     this.fetchMatches();
   };

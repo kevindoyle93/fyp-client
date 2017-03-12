@@ -94,14 +94,7 @@ export class NewMatchPage {
     confirmationModal.onDidDismiss(data => {
       if (data.confirmed) {
         this.fetchTactics(data.matchData);
-
-        let matches = this.localStorage.get('matches');
-        if (matches == null) {
-          matches = [];
-        }
-
-        matches.push(this.match);
-        this.localStorage.set('matches', matches);
+        this.localStorage.addNewMatch(this.match);
       }
     });
     confirmationModal.present();

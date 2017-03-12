@@ -16,6 +16,17 @@ export class LocalStorage {
     return JSON.parse(window.localStorage.getItem(key));
   };
 
+  addNewMatch = (match: Match) => {
+    console.log('new match');
+    let matches = this.get('matches');
+    if (matches == null) {
+      matches = [];
+    }
+
+    matches.push(match);
+    this.set('matches', matches);
+  };
+
   getMatches = () => {
     let matches = [];
     let matchesJson: any = this.get('matches');
