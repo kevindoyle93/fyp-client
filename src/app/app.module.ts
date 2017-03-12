@@ -7,10 +7,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {MatchPage} from "../pages/match/match";
 import {NewMatchPage} from "../pages/new-match/new-match";
 import {ConfirmMatchModalPage} from "../pages/confirm-match-modal/confirm-match-modal";
+import {LoginPage} from "../pages/login/login";
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     TacticsPage,
     MatchesPage,
     TabsPage,
@@ -27,6 +29,7 @@ import {ConfirmMatchModalPage} from "../pages/confirm-match-modal/confirm-match-
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     TacticsPage,
     MatchesPage,
     TabsPage,
