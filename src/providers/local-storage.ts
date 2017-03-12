@@ -57,7 +57,7 @@ export class LocalStorage {
       ));
     }
 
-    return matches;
+    return matches.sort((match1, match2) => match2.date - match1.date);
   };
 
   setToken = (token: string) => {
