@@ -11,7 +11,7 @@ import {MockTacticalAdvice} from "../mock/mock-tactical-advice";
 export class ApiService {
 
   private http: Http;
-  private readonly matchUrl = 'https://plsuchttai.localtunnel.me/api/get_tactical_advice/';
+  private readonly matchUrl = 'http://localhost:8888/api/get_tactical_advice/';
 
   constructor(http: Http) {
     this.http = http;

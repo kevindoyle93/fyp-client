@@ -1,8 +1,8 @@
 export class Stat {
-  displayName: string;
-  apiName: string;
-  homeValue: number;
-  awayValue: number;
+  public displayName: string;
+  public apiName: string;
+  public homeValue: number;
+  public awayValue: number;
 
   constructor(displayName: string, apiName: string, homeValue: number, awayValue: number) {
     this.displayName = displayName;
