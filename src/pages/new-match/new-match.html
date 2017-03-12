@@ -26,6 +26,12 @@
       </table>
       <div id="date">{{match.getDateString()}}</div>
 
+      <div id="possessionContainer" class="stat-container">
+        <div id="homePossession" class="possession-option">{{match.stats[2].homeValue}}</div>
+        <span id="possessionLabel" class="possession-option possession-selected">{{match.stats[2].displayName}}</span>
+        <div id="awayPossession" class="possession-option">{{match.stats[2].awayValue}}</div>
+      </div>
+
       <div class="stat-container" *ngFor="let stat of match.getIntegerCountStats()">
         <button ion-button clear (click)="onStatChange(1, 0, stat)">
           <ion-icon name="arrow-round-up"></ion-icon>
