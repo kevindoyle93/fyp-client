@@ -7,12 +7,12 @@ import {Stat} from "../../api/models/Stat";
 import {ConfirmMatchModalPage} from "../confirm-match-modal/confirm-match-modal";
 import {ApiService} from "../../api/providers/api-service";
 import {TacticalAdvice} from "../../api/models/TacticalAdvice";
-import {TimeInterval} from "rxjs";
+import {LocalStorage} from "../../providers/local-storage";
 
 @Component({
   selector: 'page-new-match',
   templateUrl: 'new-match.html',
-  providers: [ApiService]
+  providers: [ApiService, LocalStorage]
 })
 export class NewMatchPage {
 
@@ -26,7 +26,7 @@ export class NewMatchPage {
   private homePossession: number = 0;
   private awayPossession : number = 0;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public apiService: ApiService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public apiService: ApiService, public localStorage: LocalStorage) {
     this.match = Match.createBlank();
   }
 
@@ -94,6 +94,14 @@ export class NewMatchPage {
     confirmationModal.onDidDismiss(data => {
       if (data.confirmed) {
         this.fetchTactics(data.matchData);
+
+        let matches = this.localStorage.get('matches');
+        if (matches == null) {
+          matches = [];
+        }
+
+        matches.push(this.match);
+        this.localStorage.set('matches', matches);
       }
     });
     confirmationModal.present();
