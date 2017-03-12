@@ -17,7 +17,6 @@ export class LocalStorage {
   };
 
   addNewMatch = (match: Match) => {
-    console.log('new match');
     let matches = this.get('matches');
     if (matches == null) {
       matches = [];
