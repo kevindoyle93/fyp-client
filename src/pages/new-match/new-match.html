@@ -30,7 +30,7 @@
         <div id="homePossession" class="possession-option" [ngClass]="{'possession-selected': homeTeamInPossession}" (click)="onPossessionChange('home')">
           {{match.stats[2].homeValue}}%
         </div>
-        <span id="possessionLabel" class="possession-option" [ngClass]="{'possession-selected': noTeamInPossession}" (click)="onPossessionChange('none')">
+        <span id="possessionLabel" class="possession-option" [ngClass]="{'possession-selected': !homeTeamInPossession && !awayTeamInPossession}" (click)="onPossessionChange('none')">
           {{match.stats[2].displayName}}
         </span>
         <div id="awayPossession" class="possession-option" [ngClass]="{'possession-selected': awayTeamInPossession}" (click)="onPossessionChange('away')">
