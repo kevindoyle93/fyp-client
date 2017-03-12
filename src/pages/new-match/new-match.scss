@@ -40,6 +40,32 @@ page-new-match {
       flex-grow: 5;
     }
 
+    #possessionLabel {
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #homePossession {
+      margin-left: 16px;
+      width: 70px;
+      float: left;
+    }
+
+    #awayPossession {
+      margin-right: 12px;
+      width: 70px;
+      float: right;
+    }
+
+    .possession-option {
+      padding: 4px 8px;
+    }
+
+    .possession-selected {
+      border: 1px solid #4CAF50;
+    }
+
     #date {
       font-size: 0.8em;
       margin-bottom: 16px;
