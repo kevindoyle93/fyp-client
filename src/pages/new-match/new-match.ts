@@ -18,6 +18,10 @@ export class NewMatchPage {
   match: Match;
   tactics: TacticalAdvice;
 
+  private homeTeamInPossession = false;
+  private awayTeamInPossession = false;
+  private noTeamInPossession = true;
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public apiService: ApiService) {
     this.match = Match.createBlank();
   }
@@ -31,6 +35,22 @@ export class NewMatchPage {
       if (amount === 1 || (amount === -1 && stat.awayValue > 0)) {
         stat.awayValue += amount;
       }
+    }
+  };
+
+  onPossessionChange = (team: string) => {
+    if (team == 'home') {
+      this.homeTeamInPossession = true;
+      this.awayTeamInPossession = false;
+      this.noTeamInPossession = false;
+    } else if (team == 'away') {
+      this.homeTeamInPossession = false;
+      this.awayTeamInPossession = true;
+      this.noTeamInPossession = false;
+    } else {
+      this.homeTeamInPossession = false;
+      this.awayTeamInPossession = false;
+      this.noTeamInPossession = true;
     }
   };
 
