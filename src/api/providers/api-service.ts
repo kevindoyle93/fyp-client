@@ -11,13 +11,28 @@ import {MockTacticalAdvice} from "../mock/mock-tactical-advice";
 export class ApiService {
 
   private http: Http;
-  private readonly matchUrl = 'http://localhost:8000/api/get_tactical_advice/';
+  private readonly baseUrl: string = 'http://localhost:8000/api/';
+  private readonly registerEndpoint: string = 'coaches/';
+  private readonly getAuthTokenEndpoint: string = 'api-token-auth/';
+  private readonly matchEndpoint = 'get_tactical_advice/';
 
   constructor(http: Http) {
     this.http = http;
   }
 
-  postMatch = (match: any): Observable<TacticalAdvice[]> => {
+  registerUser = (username: string, password: string) => {
+    return this.http.post(this.baseUrl + this.registerEndpoint, {username: username, password: password})
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  };
+
+  getAuthToken = (username: string, password: string) => {
+    return this.http.post(this.baseUrl + this.getAuthTokenEndpoint, {username: username, password: password})
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  };
+
+  getTacticalAdvice = (match: any): Observable<TacticalAdvice[]> => {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -28,13 +43,9 @@ export class ApiService {
       }
     }
 
-    return this.http.post(this.matchUrl, body, headers)
+    return this.http.post(this.baseUrl + this.matchEndpoint, body, headers)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-      // .map((res: Response) => {
-      //   return MockTacticalAdvice.TacticalAdviceArray().results;
-      // })
-      // .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   };
 
 }

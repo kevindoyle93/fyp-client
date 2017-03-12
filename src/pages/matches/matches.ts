@@ -15,7 +15,7 @@ import {LocalStorage} from "../../providers/local-storage";
 })
 export class MatchesPage {
 
-  matches: Array<Match>;
+  public matches: Array<Match> = [];
 
   constructor(public navCtrl: NavController, public localStorage: LocalStorage) {
 

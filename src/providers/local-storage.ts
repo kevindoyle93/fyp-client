@@ -60,4 +60,12 @@ export class LocalStorage {
     return matches;
   };
 
+  setToken = (token: string) => {
+    this.set('token', token);
+  };
+
+  getToken = () => {
+    return this.get('token');
+  };
+
 }

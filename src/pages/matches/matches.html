@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="page-content">
+  <p [hidden]="matches.length">No Matches found. Click the + button to add a match.</p>
   <ion-list no-lines>
     <div id="matches-list" ion-item *ngFor="let match of matches" (click)="onMatchClicked(match)">
       <table id="score-container">

@@ -101,7 +101,7 @@ export class NewMatchPage {
   };
 
   private fetchTactics = (matchData) => {
-    this.apiService.postMatch(matchData)
+    this.apiService.getTacticalAdvice(matchData)
       .subscribe(
         res => {
           this.tactics = res['tactical_advice'];
