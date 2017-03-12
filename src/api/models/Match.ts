@@ -5,6 +5,8 @@ export class Match {
   date: Date;
   stats: Array<Stat>;
 
+  userTeamIsHomeTeam: boolean;
+
 
   static createBlank() {
     return new Match('', '', new Date(), 0, 0, 0, 0, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -28,7 +30,7 @@ export class Match {
   }
 
   getDateString = () => {
-    return this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+    return this.date.getDate() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getFullYear();
   };
 
   getIntegerCountStats = () => {
