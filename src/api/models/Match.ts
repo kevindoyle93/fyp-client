@@ -28,7 +28,7 @@ export class Match {
   }
 
   getDateString = () => {
-    return this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+    return this.date.getDate() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getFullYear();
   };
 
   getIntegerCountStats = () => {
