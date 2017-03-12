@@ -63,5 +63,23 @@
       </button>
     </ion-item-divider>
 
+    <ion-card *ngFor="let tactic of tactics">
+      <ion-card-header>
+        {{tactic.title}}
+      </ion-card-header>
+      <ion-card-content>
+        {{tactic.body}}
+      </ion-card-content>
+      <div class="divider"></div>
+      <ion-card-header>
+        Drills
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngFor="let drill of tactic.drills">
+          {{drill.name}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
   </ion-list>
 </ion-content>
