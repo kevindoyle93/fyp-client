@@ -25,7 +25,7 @@ export class TacticsPage {
   statsDatasets = [];
 
   constructor(public navCtrl: NavController, public localStorage: LocalStorage) {
-    this.fetchTactics();
+    // this.fetchTactics();
     this.fetchMatches();
     this.statsDatasets = this.createChartData(this.matches);
   }
