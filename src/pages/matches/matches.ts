@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import {NavController, PopoverController, App} from 'ionic-angular';
 
 import {Match} from '../../api/models/Match';
 import {MatchPage} from "../match/match";
 import {NewMatchPage} from "../new-match/new-match";
 import {LocalStorage} from "../../providers/local-storage";
+import {LoginLogoutPopoverPage} from "../login-logout-popover/login-logout-popover";
 
 @Component({
   selector: 'page-matches',
@@ -15,9 +16,9 @@ import {LocalStorage} from "../../providers/local-storage";
 })
 export class MatchesPage {
 
-  matches: Array<Match>;
+  public matches: Array<Match> = [];
 
-  constructor(public navCtrl: NavController, public localStorage: LocalStorage) {
+  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController) {
 
   }
 
@@ -38,6 +39,16 @@ export class MatchesPage {
 
   onNewMatchClicked = () => {
     this.navCtrl.push(NewMatchPage);
-  }
+  };
+
+  presentPopover = (event) => {
+    let popover = this.popoverCtrl.create(LoginLogoutPopoverPage, {loggedIn: this.localStorage.getToken()});
+    popover.onDidDismiss((data) => {
+      if (data.goToLogin) {
+        this.appCtrl.getRootNav().popToRoot();
+      }
+    });
+    popover.present({ev: event});
+  };
 
 }

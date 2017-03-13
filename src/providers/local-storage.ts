@@ -26,6 +26,10 @@ export class LocalStorage {
     this.set('matches', matches);
   };
 
+  clearMatches = () => {
+    this.set('matches', null);
+  };
+
   getMatches = () => {
     let matches = [];
     let matchesJson: any = this.get('matches');
@@ -57,7 +61,15 @@ export class LocalStorage {
       ));
     }
 
-    return matches;
+    return matches.sort((match1, match2) => match2.date - match1.date);
+  };
+
+  setToken = (token: string) => {
+    this.set('token', token);
+  };
+
+  getToken = () => {
+    return this.get('token');
   };
 
 }

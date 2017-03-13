@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Football AI</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="container">
+    <h3>
+      Register/Login
+    </h3>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <div>
+      <button id="loginButton" ion-button (click)="login()">Login</button>
+    </div>
+    <div>
+      <button id="skipButton" ion-button (click)="skipLogin()">Skip</button>
+    </div>
+  </div>
+</ion-content>
