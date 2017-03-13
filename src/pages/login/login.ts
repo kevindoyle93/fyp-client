@@ -53,16 +53,18 @@ export class LoginPage {
       .subscribe(
         res => {
           for (let i = 0; i < res['results'].length; i++) {
-            let match = res['results'][i];
-            this.localStorage.addNewMatch(new Match(
-              match['home_team'], match['away_team'], new Date(Date.parse(match['date'])), match['full_time_home_goals'],
-              match['full_time_away_goals'], match['half_time_home_goals'], match['half_time_away_goals'],
-              Number(match['home_possession']), Number(match['away_possession']), match['home_total_shots'],
-              match['away_total_shots'], match['home_shots_on_target'], match['away_shots_on_target'],
-              match['home_corners'], match['away_corners'], match['home_fouls'], match['away_fouls'],
-              match['home_yellow_cards'], match['away_yellow_cards'], match['home_red_cards'], match['away_red_cards']
+            let m = res['results'][i];
+            let match = new Match(
+              m['home_team'], m['away_team'], new Date(Date.parse(m['date'])), m['full_time_home_goals'],
+              m['full_time_away_goals'], m['half_time_home_goals'], m['half_time_away_goals'],
+              Number(m['home_possession']), Number(m['away_possession']), m['home_total_shots'],
+              m['away_total_shots'], m['home_shots_on_target'], m['away_shots_on_target'],
+              m['home_corners'], m['away_corners'], m['home_fouls'], m['away_fouls'],
+              m['home_yellow_cards'], m['away_yellow_cards'], m['home_red_cards'], m['away_red_cards']
 
-            ));
+            );
+            match.coachTeamIsHomeTeam = m['coach_team_is_home_team'];
+            this.localStorage.addNewMatch(match);
           }
 
           console.log(this.localStorage.getMatches());

@@ -3,9 +3,8 @@ export class Match {
   homeTeam: string;
   awayTeam: string;
   date: Date;
+  coachTeamIsHomeTeam: boolean = true;
   stats: Array<Stat>;
-
-  userTeamIsHomeTeam: boolean;
 
 
   static createBlank() {
@@ -68,9 +67,9 @@ export class Match {
     }
   }
 
-  static convertMatchForBackend = (match: Match, userTeamIsHomeTeam: boolean) => {
+  static convertMatchForBackend = (match: Match) => {
     let formatted_match = {};
-    if (userTeamIsHomeTeam) {
+    if (match.coachTeamIsHomeTeam) {
       formatted_match['at_home'] = true;
       formatted_match['winning_at_half_time'] = match.stats[1].homeValue > match.stats[1].awayValue;
 

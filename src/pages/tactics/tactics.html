@@ -8,6 +8,16 @@
 
 <ion-content>
   <ion-list>
+
+    <ion-card *ngFor="let stat of statsDatasets">
+      <ion-card-header>
+          {{stat.title}}
+        </ion-card-header>
+      <ion-card-content>
+        <canvas id="{{stat.element_id}}"></canvas>
+      </ion-card-content>
+    </ion-card>
+
     <ion-card *ngFor="let tactic of tactics">
       <ion-card-header>
         {{tactic.title}}
