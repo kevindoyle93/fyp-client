@@ -9,21 +9,12 @@
 <ion-content>
   <ion-list>
 
-    <ion-card>
+    <ion-card *ngFor="let stat of statsDatasets">
       <ion-card-header>
-        Goals
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #goalsCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-          Half Time Goals
+          {{stat.title}}
         </ion-card-header>
       <ion-card-content>
-        <canvas #halfTimeGoalsCanvas></canvas>
+        <canvas id="{{stat.element_id}}"></canvas>
       </ion-card-content>
     </ion-card>
 

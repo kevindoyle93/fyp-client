@@ -22,17 +22,19 @@ export class TacticsPage {
 
   tactics: Array<TacticalAdvice>;
   matches: Array<Match>;
+  statsDatasets = [];
 
   constructor(public navCtrl: NavController, public localStorage: LocalStorage) {
     this.fetchTactics();
     this.fetchMatches();
+    this.statsDatasets = this.createChartData(this.matches);
   }
 
   ionViewDidLoad() {
-    let datasets = this.createChartData(this.matches);
-
-    this.goalsChart = new Chart(this.goalsCanvas.nativeElement, datasets[0]);
-    this.halfTimeGoalsChart = new Chart(this.halfTimeGoalsCanvas.nativeElement, datasets[1]);
+    for (let i = 0; i < this.statsDatasets.length; i++) {
+      let canvas = document.getElementById(this.statsDatasets[i].element_id);
+      new Chart(canvas, this.statsDatasets[i]);
+    }
   }
 
   private fetchMatches = () => {
@@ -64,6 +66,8 @@ export class TacticsPage {
     let statsDatasets = [];
     for (let i = 0; i < matches[0].stats.length; i++) {
       statsDatasets.push({
+        title: matches[0].stats[i].displayName,
+        element_id: matches[0].stats[i].apiName,
         type: 'line',
         data: {
           labels: [],
@@ -82,17 +86,41 @@ export class TacticsPage {
           }
         }
       });
+
+      statsDatasets.push({
+        title: 'Opposition ' + matches[0].stats[i].displayName,
+        element_id: 'opp_' + matches[0].stats[i].apiName,
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            data: [],
+            backgroundColor: 'rgba(175, 80, 76, 0.4)'
+          }]
+        },
+        options: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Last ' + numMatches + ' Matches'
+          }
+        }
+      });
     }
 
     for (let i = 0; i < matches.length; i++) {
       let match = this.matches[i];
       let m = Match.convertMatchForBackend(match);
 
-      statsDatasets[0].data.labels.push('');
-      statsDatasets[0].data.datasets[0].data.push(m['full_time_goals']);
+      let stats = Object.keys(m);
 
-      statsDatasets[1].data.labels.push('');
-      statsDatasets[1].data.datasets[0].data.push(m['half_time_goals']);
+      // The first two starts aren't displayed
+      for (let j = 0; j < stats.length - 2; j++) {
+        statsDatasets[j].data.labels.push('');
+        statsDatasets[j].data.datasets[0].data.push(m[stats[j + 2]]);
+      }
 
     }
 
