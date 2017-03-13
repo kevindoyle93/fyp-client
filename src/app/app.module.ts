@@ -8,6 +8,7 @@ import {MatchPage} from "../pages/match/match";
 import {NewMatchPage} from "../pages/new-match/new-match";
 import {ConfirmMatchModalPage} from "../pages/confirm-match-modal/confirm-match-modal";
 import {LoginPage} from "../pages/login/login";
+import {LoginLogoutPopoverPage} from "../pages/login-logout-popover/login-logout-popover";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {LoginPage} from "../pages/login/login";
     TabsPage,
     MatchPage,
     NewMatchPage,
-    ConfirmMatchModalPage
+    ConfirmMatchModalPage,
+    LoginLogoutPopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -35,7 +37,8 @@ import {LoginPage} from "../pages/login/login";
     TabsPage,
     MatchPage,
     NewMatchPage,
-    ConfirmMatchModalPage
+    ConfirmMatchModalPage,
+    LoginLogoutPopoverPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
