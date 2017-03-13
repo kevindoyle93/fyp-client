@@ -17,11 +17,12 @@ export class LoginLogoutPopoverPage {
 
   logout = () => {
     this.localStorage.setToken(null);
-    this.localStorage.clearMatches();
     this.goToLogin();
   };
 
   goToLogin = () => {
+    this.localStorage.clearMatches();
+    this.localStorage.set('skippedLogin', null);
     this.viewCtrl.dismiss({goToLogin: true});
   };
 

@@ -16,7 +16,7 @@ export class LoginPage {
   password: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public localStorage: LocalStorage) {
-    if (localStorage.getToken()) {
+    if (localStorage.getToken() || localStorage.get('skippedLogin')) {
       navCtrl.push(TabsPage);
     }
   }
@@ -33,6 +33,7 @@ export class LoginPage {
   };
 
   public skipLogin = () => {
+    this.localStorage.set('skippedLogin', true);
     this.navCtrl.push(TabsPage);
   };
 
