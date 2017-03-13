@@ -94,10 +94,38 @@ export class NewMatchPage {
     confirmationModal.onDidDismiss(data => {
       if (data.confirmed) {
         this.fetchTactics(data.matchData);
+
+        if (this.localStorage.getToken()) {
+          this.postMatch();
+        }
+
         this.localStorage.addNewMatch(this.match);
       }
     });
     confirmationModal.present();
+  };
+
+  private postMatch = () => {
+    let match = {};
+    match['home_team'] = this.match.homeTeam;
+    match['away_team'] = this.match.awayTeam;
+    match['date'] = this.match.date;
+    match['full_time_home_goals'] = this.match.stats[0].homeValue;
+    match['full_time_away_goals'] = this.match.stats[0].awayValue;
+    match['half_time_home_goals'] = this.match.stats[1].homeValue;
+    match['half_time_away_goals'] = this.match.stats[1].awayValue;
+
+    for (let i = 2; i < this.match.stats.length; i++) {
+      let stat = this.match.stats[i];
+      match['home_' + stat.apiName] = stat.homeValue;
+      match['away_' + stat.apiName] = stat.awayValue;
+    }
+
+    this.apiService.postMatch(match, this.localStorage.getToken())
+      .subscribe(
+        res => console.log(res),
+        error => console.log(error)
+      );
   };
 
   private fetchTactics = (matchData) => {

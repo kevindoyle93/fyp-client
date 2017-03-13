@@ -14,7 +14,8 @@ export class ApiService {
   private readonly baseUrl: string = 'http://localhost:8000/api/';
   private readonly registerEndpoint: string = 'coaches/';
   private readonly getAuthTokenEndpoint: string = 'api-token-auth/';
-  private readonly matchEndpoint = 'get_tactical_advice/';
+  private readonly tacticalAdviceEndpoint = 'get_tactical_advice/';
+  private readonly matchEndpoint = 'coaches/matches';
 
   constructor(http: Http) {
     this.http = http;
@@ -32,6 +33,23 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   };
 
+  postMatch = (match, token: string) => {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization','Token ' + token);
+    let options = new RequestOptions({headers: headers});
+
+    let body = {};
+    for (let key in match) {
+      if (match.hasOwnProperty(key)) {
+        body[key] = match[key];
+      }
+    }
+
+    return this.http.post(this.baseUrl + this.matchEndpoint, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || error));
+  };
+
   getTacticalAdvice = (match: any): Observable<TacticalAdvice[]> => {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -43,7 +61,7 @@ export class ApiService {
       }
     }
 
-    return this.http.post(this.baseUrl + this.matchEndpoint, body, headers)
+    return this.http.post(this.baseUrl + this.tacticalAdviceEndpoint, body, headers)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   };
