@@ -15,16 +15,10 @@ export class ConfirmMatchModalPage {
 
   constructor(public viewCtrl: ViewController, navParams: NavParams) {
     this.match = navParams.get('match');
-    console.log(this.match);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfirmMatchModalPage');
   }
 
   changeUsersTeam = (homeTeam: boolean) => {
-    this.userTeamIsHomeTeam = homeTeam;
-    console.log(this.userTeamIsHomeTeam);
+    this.match.coachTeamIsHomeTeam = homeTeam;
   };
 
   dismiss = () => {
@@ -34,7 +28,7 @@ export class ConfirmMatchModalPage {
   confirm = () => {
     this.viewCtrl.dismiss({
       confirmed: true,
-      matchData: Match.convertMatchForBackend(this.match, this.userTeamIsHomeTeam)
+      matchData: Match.convertMatchForBackend(this.match)
     });
   };
 

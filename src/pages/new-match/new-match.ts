@@ -110,6 +110,7 @@ export class NewMatchPage {
     match['home_team'] = this.match.homeTeam;
     match['away_team'] = this.match.awayTeam;
     match['date'] = this.match.date;
+    match['coach_team_is_home_team'] = this.match.coachTeamIsHomeTeam;
     match['full_time_home_goals'] = this.match.stats[0].homeValue;
     match['full_time_away_goals'] = this.match.stats[0].awayValue;
     match['half_time_home_goals'] = this.match.stats[1].homeValue;
