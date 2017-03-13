@@ -8,6 +8,25 @@
 
 <ion-content>
   <ion-list>
+
+    <ion-card>
+      <ion-card-header>
+        Goals
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #goalsCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+          Half Time Goals
+        </ion-card-header>
+      <ion-card-content>
+        <canvas #halfTimeGoalsCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
     <ion-card *ngFor="let tactic of tactics">
       <ion-card-header>
         {{tactic.title}}
