@@ -31,6 +31,10 @@ export class LoginPage {
       );
   };
 
+  public skipLogin = () => {
+    this.navCtrl.push(TabsPage);
+  };
+
   private getAuthToken = () => {
     this.apiService.getAuthToken(this.username, this.password)
       .subscribe(
