@@ -26,6 +26,10 @@ export class LocalStorage {
     this.set('matches', matches);
   };
 
+  clearMatches = () => {
+    this.set('matches', null);
+  };
+
   getMatches = () => {
     let matches = [];
     let matchesJson: any = this.get('matches');

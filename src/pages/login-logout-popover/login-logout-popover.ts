@@ -17,6 +17,7 @@ export class LoginLogoutPopoverPage {
 
   logout = () => {
     this.localStorage.setToken(null);
+    this.localStorage.clearMatches();
     this.goToLogin();
   };
 
