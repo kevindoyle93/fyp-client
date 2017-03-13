@@ -33,6 +33,16 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   };
 
+  getMatches = (token: string) => {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization','Token ' + token);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(this.baseUrl + this.matchEndpoint, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || error));
+  };
+
   postMatch = (match, token: string) => {
     let headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization','Token ' + token);
