@@ -40,7 +40,7 @@ export class LocalStorage {
 
     for (let i = 0; i < matchesJson.length; i++) {
       let m: any = matchesJson[i];
-      matches.push(new Match(
+      let match = new Match(
         m.homeTeam,
         m.awayTeam,
         new Date(m.date),
@@ -62,7 +62,9 @@ export class LocalStorage {
         m.stats[7].awayValue,
         m.stats[8].homeValue,
         m.stats[8].awayValue,
-      ));
+      );
+      match.coachTeamIsHomeTeam = m['coachTeamIsHomeTeam'];
+      matches.push(match);
     }
 
     return matches.sort((match1, match2) => match2.date - match1.date);
