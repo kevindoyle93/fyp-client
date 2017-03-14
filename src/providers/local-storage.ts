@@ -34,6 +34,10 @@ export class LocalStorage {
     let matches = [];
     let matchesJson: any = this.get('matches');
 
+    if (matchesJson == null) {
+      return matches;
+    }
+
     for (let i = 0; i < matchesJson.length; i++) {
       let m: any = matchesJson[i];
       matches.push(new Match(
