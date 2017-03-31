@@ -12,7 +12,7 @@ export class ApiService {
 
   private http: Http;
   // private readonly baseUrl: string = 'http://localhost:8000/api/';
-  private readonly baseUrl: string = 'http://ec2-54-201-19-112.us-west-2.compute.amazonaws.com/api/';
+  private readonly baseUrl: string = 'https://www.fyp-football-analysis.top/api/';
   private readonly registerEndpoint: string = 'coaches/';
   private readonly getAuthTokenEndpoint: string = 'api-token-auth/';
   private readonly tacticalAdviceEndpoint = 'get_tactical_advice/';
