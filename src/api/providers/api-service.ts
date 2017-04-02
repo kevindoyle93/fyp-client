@@ -16,7 +16,7 @@ export class ApiService {
   private readonly registerEndpoint: string = 'coaches/';
   private readonly getAuthTokenEndpoint: string = 'api-token-auth/';
   private readonly tacticalAdviceEndpoint = 'get_tactical_advice/';
-  private readonly matchEndpoint = 'coaches/matches';
+  private readonly matchEndpoint = 'coaches/matches/';
 
   constructor(http: Http) {
     this.http = http;
