@@ -23,7 +23,7 @@ export class MatchPage {
   }
 
   private fetchTactics = () => {
-    this.apiService.getTacticalAdvice(Match.testApi())
+    this.apiService.getTacticalAdvice(Match.convertMatchForBackend(this.match))
       .subscribe(
         res => {
           this.tactics = res['tactical_advice'];
