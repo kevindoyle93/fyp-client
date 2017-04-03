@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController, NavParams } from 'ionic-angular';
+import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import {ApiService} from "../../api/providers/api-service";
 import {LocalStorage} from "../../providers/local-storage";
@@ -17,13 +17,17 @@ export class LoginPage {
 
   private loadingSpinner: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public localStorage: LocalStorage, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public apiService: ApiService, public localStorage: LocalStorage, public loadCtrl: LoadingController, public toastCtrl: ToastController) {
     if (localStorage.getToken() || localStorage.get('skippedLogin')) {
       navCtrl.push(TabsPage);
     }
   }
 
   public login = () => {
+    if (!this.validateForm()) {
+      return;
+    }
+
     // Create loading spinner
     this.loadingSpinner = this.loadCtrl.create({
       content: 'Please wait...'
@@ -42,6 +46,18 @@ export class LoginPage {
   public skipLogin = () => {
     this.localStorage.set('skippedLogin', true);
     this.navCtrl.push(TabsPage);
+  };
+
+  private validateForm = () => {
+    if (!this.username || !this.password) {
+      this.toastCtrl.create({
+        message: 'Please enter a username and password',
+        duration: 3000,
+      }).present();
+
+      return false;
+    }
+    return true;
   };
 
   private getAuthToken = () => {
