@@ -70,6 +70,16 @@ export class LocalStorage {
     return matches.sort((match1, match2) => match2.date - match1.date);
   };
 
+  deleteMatch = (match: Match) => {
+    let matches: Match[] = this.getMatches();
+    matches.splice(matches.indexOf(match));
+
+    this.clearMatches();
+    for (let i = 0; i < matches.length; i++) {
+      this.addNewMatch(matches[i]);
+    }
+  };
+
   setToken = (token: string) => {
     this.set('token', token);
   };

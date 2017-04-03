@@ -31,16 +31,16 @@ export class MatchesPage {
     this.matches = this.localStorage.getMatches();
   };
 
-  onMatchClicked = (match: any) => {
+  onMatchClicked = (match: Match) => {
     this.navCtrl.push(MatchPage, {
       match: match
     });
   };
 
-  onMatchLongPressed = (match: any) => {
+  onMatchLongPressed = (match: Match) => {
     let alert = this.alertCtrl.create({
-      title: 'Confirm purchase',
-      message: 'Do you want to buy this book?',
+      title: 'Confirm Delete',
+      message: 'Do you want to delete this match?',
       buttons: [
         {
           text: 'Cancel',
@@ -49,6 +49,7 @@ export class MatchesPage {
         {
           text: 'Delete',
           handler: () => {
+            console.log('handler');
             this.deleteMatch(match);
           }
         }
@@ -71,7 +72,10 @@ export class MatchesPage {
     popover.present({ev: event});
   };
 
-  private deleteMatch = (match: any) => {
-    console.log(match.date);
+  private deleteMatch = (match: Match) => {
+    // Delete the match from the current screen
+    this.matches.splice(this.matches.indexOf(match));
+    // Delete the match in local storage
+    this.localStorage.deleteMatch(match);
   }
 }
