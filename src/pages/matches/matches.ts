@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {NavController, PopoverController, App} from 'ionic-angular';
+import {NavController, PopoverController, App, AlertController} from 'ionic-angular';
 
 import {Match} from '../../api/models/Match';
 import {MatchPage} from "../match/match";
@@ -18,7 +18,7 @@ export class MatchesPage {
 
   public matches: Array<Match> = [];
 
-  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
 
   }
 
@@ -37,6 +37,26 @@ export class MatchesPage {
     });
   };
 
+  onMatchLongPressed = (match: any) => {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm purchase',
+      message: 'Do you want to buy this book?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteMatch(match);
+          }
+        }
+      ]
+    });
+    alert.present();
+  };
+
   onNewMatchClicked = () => {
     this.navCtrl.push(NewMatchPage);
   };
@@ -51,4 +71,7 @@ export class MatchesPage {
     popover.present({ev: event});
   };
 
+  private deleteMatch = (match: any) => {
+    console.log(match.date);
+  }
 }
