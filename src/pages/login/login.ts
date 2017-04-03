@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import {ApiService} from "../../api/providers/api-service";
 import {LocalStorage} from "../../providers/local-storage";
@@ -15,14 +15,21 @@ export class LoginPage {
   username: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public localStorage: LocalStorage) {
+  private loadingSpinner: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public localStorage: LocalStorage, public loadCtrl: LoadingController) {
     if (localStorage.getToken() || localStorage.get('skippedLogin')) {
       navCtrl.push(TabsPage);
     }
   }
 
   public login = () => {
-    console.log(this.username + ':' + this.password);
+    // Create loading spinner
+    this.loadingSpinner = this.loadCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loadingSpinner.present();
+
     this.apiService.registerUser(this.username, this.password)
       .subscribe(
         res => {
@@ -61,13 +68,12 @@ export class LoginPage {
               m['away_total_shots'], m['home_shots_on_target'], m['away_shots_on_target'],
               m['home_corners'], m['away_corners'], m['home_fouls'], m['away_fouls'],
               m['home_yellow_cards'], m['away_yellow_cards'], m['home_red_cards'], m['away_red_cards']
-
             );
             match.coachTeamIsHomeTeam = m['coach_team_is_home_team'];
             this.localStorage.addNewMatch(match);
           }
 
-          console.log(this.localStorage.getMatches());
+          this.loadingSpinner.dismiss();
           this.navCtrl.push(TabsPage);
         },
         error => console.log(error)
