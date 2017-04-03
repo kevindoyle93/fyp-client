@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {NavController, PopoverController, App} from 'ionic-angular';
+import {NavController, PopoverController, App, AlertController} from 'ionic-angular';
 
 import {Match} from '../../api/models/Match';
 import {MatchPage} from "../match/match";
@@ -18,7 +18,7 @@ export class MatchesPage {
 
   public matches: Array<Match> = [];
 
-  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
 
   }
 
@@ -31,10 +31,31 @@ export class MatchesPage {
     this.matches = this.localStorage.getMatches();
   };
 
-  onMatchClicked = (match: any) => {
+  onMatchClicked = (match: Match) => {
     this.navCtrl.push(MatchPage, {
       match: match
     });
+  };
+
+  onMatchLongPressed = (match: Match) => {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Do you want to delete this match?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            console.log('handler');
+            this.deleteMatch(match);
+          }
+        }
+      ]
+    });
+    alert.present();
   };
 
   onNewMatchClicked = () => {
@@ -51,4 +72,10 @@ export class MatchesPage {
     popover.present({ev: event});
   };
 
+  private deleteMatch = (match: Match) => {
+    // Delete the match from the current screen
+    this.matches.splice(this.matches.indexOf(match));
+    // Delete the match in local storage
+    this.localStorage.deleteMatch(match);
+  }
 }
