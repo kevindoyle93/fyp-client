@@ -25,13 +25,13 @@ export class ApiService {
   registerUser = (username: string, password: string) => {
     return this.http.post(this.baseUrl + this.registerEndpoint, {username: username, password: password})
       .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   };
 
   getAuthToken = (username: string, password: string) => {
     return this.http.post(this.baseUrl + this.getAuthTokenEndpoint, {username: username, password: password})
       .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   };
 
   getMatches = (token: string) => {
