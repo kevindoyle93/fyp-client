@@ -35,7 +35,20 @@ export class LoginPage {
         res => {
           this.getAuthToken();
         },
-        error => console.log(error)
+        error => {
+          if (error.status === 400) {
+            this.toastCtrl.create({
+              message: 'A user with that username already exists',
+              duration: 3000,
+            }).present();
+          } else {
+            this.toastCtrl.create({
+              message: 'We are experiencing technical difficulties, please try again',
+              duration: 3000,
+            }).present();
+          }
+          this.loadingSpinner.dismiss();
+        }
       );
 
   } ;
