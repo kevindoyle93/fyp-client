@@ -5,14 +5,13 @@ import 'rxjs/add/operator/map';
 
 import  {Match} from '../models/Match';
 import  {TacticalAdvice} from '../models/TacticalAdvice';
-import {MockTacticalAdvice} from "../mock/mock-tactical-advice";
 
 @Injectable()
 export class ApiService {
 
   private http: Http;
-  // private readonly baseUrl: string = 'http://localhost:8000/api/';
-  private readonly baseUrl: string = 'https://www.fyp-football-analysis.top/api/';
+  private readonly baseUrl: string = 'http://localhost:8000/api/';
+  // private readonly baseUrl: string = 'https://www.fyp-football-analysis.top/api/';
   private readonly registerEndpoint: string = 'coaches/';
   private readonly getAuthTokenEndpoint: string = 'api-token-auth/';
   private readonly tacticalAdviceEndpoint = 'get_tactical_advice/';
@@ -59,6 +58,16 @@ export class ApiService {
     return this.http.post(this.baseUrl + this.matchEndpoint, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || error));
+  };
+
+  deleteMatch = (matchId: number, token: string) => {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization','Token ' + token);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(this.baseUrl + this.matchEndpoint + matchId + '/', options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error));
   };
 
   getTacticalAdvice = (match: any): Observable<TacticalAdvice[]> => {

@@ -110,6 +110,7 @@ export class LoginPage {
         res => {
           for (let i = 0; i < res['results'].length; i++) {
             let m = res['results'][i];
+            console.log(m);
             let match = new Match(
               m['home_team'], m['away_team'], new Date(Date.parse(m['date'])), m['full_time_home_goals'],
               m['full_time_away_goals'], m['half_time_home_goals'], m['half_time_away_goals'],
@@ -119,6 +120,8 @@ export class LoginPage {
               m['home_yellow_cards'], m['away_yellow_cards'], m['home_red_cards'], m['away_red_cards']
             );
             match.coachTeamIsHomeTeam = m['coach_team_is_home_team'];
+            match.id = m['id'];
+            console.log(match)
             this.localStorage.addNewMatch(match);
           }
 

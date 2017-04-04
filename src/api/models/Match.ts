@@ -1,5 +1,6 @@
 import {Stat} from "./Stat";
 export class Match {
+  id: number;
   homeTeam: string;
   awayTeam: string;
   date: Date;
