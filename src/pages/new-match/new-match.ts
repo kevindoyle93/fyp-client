@@ -98,8 +98,6 @@ export class NewMatchPage {
         if (this.localStorage.getToken()) {
           this.postMatch();
         }
-
-        this.localStorage.addNewMatch(this.match);
       }
     });
     confirmationModal.present();
@@ -124,7 +122,10 @@ export class NewMatchPage {
 
     this.apiService.postMatch(match, this.localStorage.getToken())
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.match.id = res['id'];
+          this.localStorage.addNewMatch(this.match);
+        },
         error => console.log(error)
       );
   };

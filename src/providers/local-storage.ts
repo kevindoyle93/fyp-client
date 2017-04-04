@@ -63,6 +63,7 @@ export class LocalStorage {
         m.stats[8].homeValue,
         m.stats[8].awayValue,
       );
+      match.id = m['id'];
       match.coachTeamIsHomeTeam = m['coachTeamIsHomeTeam'];
       matches.push(match);
     }

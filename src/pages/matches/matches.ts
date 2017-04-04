@@ -7,18 +7,19 @@ import {MatchPage} from "../match/match";
 import {NewMatchPage} from "../new-match/new-match";
 import {LocalStorage} from "../../providers/local-storage";
 import {LoginLogoutPopoverPage} from "../login-logout-popover/login-logout-popover";
+import {ApiService} from "../../api/providers/api-service";
 
 @Component({
   selector: 'page-matches',
   templateUrl: 'matches.html',
   entryComponents: [MatchPage],
-  providers: [LocalStorage]
+  providers: [LocalStorage, ApiService]
 })
 export class MatchesPage {
 
   public matches: Array<Match> = [];
 
-  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public appCtrl: App, public localStorage: LocalStorage, public popoverCtrl: PopoverController, public alertCtrl: AlertController, public apiService: ApiService) {
 
   }
 
@@ -49,7 +50,6 @@ export class MatchesPage {
         {
           text: 'Delete',
           handler: () => {
-            console.log('handler');
             this.deleteMatch(match);
           }
         }
@@ -74,8 +74,16 @@ export class MatchesPage {
 
   private deleteMatch = (match: Match) => {
     // Delete the match from the current screen
-    this.matches.splice(this.matches.indexOf(match));
+    this.matches.splice(this.matches.indexOf(match), 1);
+
     // Delete the match in local storage
     this.localStorage.deleteMatch(match);
-  }
+
+    // Delete the match in the backend
+    this.apiService.deleteMatch(match.id, this.localStorage.getToken())
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      );
+  };
 }

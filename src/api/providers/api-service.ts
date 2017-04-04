@@ -3,9 +3,7 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
-import  {Match} from '../models/Match';
 import  {TacticalAdvice} from '../models/TacticalAdvice';
-import {MockTacticalAdvice} from "../mock/mock-tactical-advice";
 
 @Injectable()
 export class ApiService {
@@ -59,6 +57,16 @@ export class ApiService {
     return this.http.post(this.baseUrl + this.matchEndpoint, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || error));
+  };
+
+  deleteMatch = (matchId: number, token: string) => {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization','Token ' + token);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(this.baseUrl + this.matchEndpoint + matchId + '/', options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error));
   };
 
   getTacticalAdvice = (match: any): Observable<TacticalAdvice[]> => {
