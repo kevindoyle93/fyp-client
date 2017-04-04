@@ -22,13 +22,9 @@
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
-    <div>
+    <div id="buttonsContainer">
       <button id="registerButton" ion-button (click)="register()">Register</button>
-    </div>
-    <div>
       <button id="loginButton" ion-button (click)="login()">Login</button>
-    </div>
-    <div>
       <button id="skipButton" ion-button (click)="skipLogin()">Skip</button>
     </div>
   </div>
