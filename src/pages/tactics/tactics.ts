@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 import {Chart} from 'chart.js';
 
 import {TacticalAdvice} from "../../api/models/TacticalAdvice";
@@ -14,46 +14,32 @@ import {LocalStorage} from "../../providers/local-storage";
 })
 export class TacticsPage {
 
-  @ViewChild('goalsCanvas') goalsCanvas;
-  @ViewChild('halfTimeGoalsCanvas') halfTimeGoalsCanvas;
-
-  goalsChart: any;
-  halfTimeGoalsChart: any;
-
   tactics: Array<TacticalAdvice>;
   matches: Array<Match>;
   statsDatasets = [];
 
-  constructor(public navCtrl: NavController, public localStorage: LocalStorage) {
-    // this.fetchTactics();
+  loadingSpinner: any;
+
+  constructor(public localStorage: LocalStorage, public loadCtrl: LoadingController) {
     this.fetchMatches();
     this.statsDatasets = this.createChartData(this.matches);
   }
 
   ionViewDidLoad() {
-    for (let i = 0; i < this.statsDatasets.length; i++) {
-      let canvas = document.getElementById(this.statsDatasets[i].element_id);
-      new Chart(canvas, this.statsDatasets[i]);
-    }
+    this.loadingSpinner = this.loadCtrl.create({
+      content: 'Creating stats charts...'
+    });
+    this.loadingSpinner.present().then(() => {
+      for (let i = 0; i < this.statsDatasets.length; i++) {
+        let canvas = document.getElementById(this.statsDatasets[i].element_id);
+        new Chart(canvas, this.statsDatasets[i]);
+      }
+      this.loadingSpinner.dismiss();
+    });
   }
 
   private fetchMatches = () => {
     this.matches = this.localStorage.getMatches();
-  };
-
-  private fetchTactics = () => {
-    this.tactics = [
-      new TacticalAdvice(
-        'Increase Shots on Target',
-        'Rather than simply increasing the number of shots your team is taking, concentrate on improving the number of shots that hit the target. This could be acheived by practicing shooting to improve accuracy, or by moving the ball into better areas to shoot from.',
-        ['Diagonal Layoff', '1 Touch Combinations', 'Supporting the Player with the Ball']
-      ),
-      new TacticalAdvice(
-        'Decrease Yellow Cards',
-        'Players with early yellow cards must play more carefully for the rest of the match, potentially negatively effecting their performance. Practice more conservative tackling to decrease the chances of picking up yellow cards.',
-        ['1 v 1 Defending the Dribble', 'Shepherding Players Without Tackling']
-      ),
-    ]
   };
 
   private createChartData = (matches: Array<Match>) => {
@@ -83,6 +69,9 @@ export class TacticsPage {
           title: {
             display: true,
             text: 'Last ' + numMatches + ' Matches'
+          },
+          animation: {
+            duration: 0
           }
         }
       });
@@ -105,6 +94,9 @@ export class TacticsPage {
           title: {
             display: true,
             text: 'Last ' + numMatches + ' Matches'
+          },
+          animation: {
+            duration: 0
           }
         }
       });
