@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{tacticalAdvice.feature}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4>
+    {{tacticalAdvice.feature}}
+  </h4>
+  <p>
+    {{tacticalAdvice.detail}}
+  </p>
+  <h5>
+    {{tacticalAdvice.title}}
+  </h5>
+  <p>
+    {{tacticalAdvice.body}}
+  </p>
+  <hr style="background-color: gainsboro; max-height: 1px; min-height: 0.5px; max-width: 350px;" />
+  <h5>
+    Drills
+  </h5>
+  <p *ngFor="let drill of tacticalAdvice.drills">
+    {{drill.name}}
+    <br />
+    <a class="drillLink" href="{{drill.link}}" target="_blank">Click here for instructions</a>
+  </p>
+</ion-content>

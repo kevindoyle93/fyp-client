@@ -6,6 +6,7 @@ import {Match} from '../../api/models/Match';
 import {TacticalAdvice} from "../../api/models/TacticalAdvice";
 import {ApiService} from "../../api/providers/api-service";
 import {LocalStorage} from "../../providers/local-storage";
+import {TacticalAdvicePage} from "../tactical-advice/tactical-advice";
 
 @Component({
   selector: 'page-match',
@@ -31,6 +32,10 @@ export class MatchPage {
         },
         error => console.log(error)
       );
-  }
+  };
+
+  openTactic = (tactic: TacticalAdvice) => {
+    this.navCtrl.push(TacticalAdvicePage, {'tacticalAdvice': tactic});
+  };
 
 }

@@ -28,7 +28,7 @@
       Tactical Analysis
     </ion-item-divider>
 
-    <ion-card *ngFor="let tactic of tactics">
+    <ion-card *ngFor="let tactic of tactics" (tap)="openTactic(tactic)">
       <ion-card-header>
         {{tactic.title}}
       </ion-card-header>
