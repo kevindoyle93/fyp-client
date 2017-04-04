@@ -23,24 +23,44 @@ export class LoginPage {
     }
   }
 
-  public login = () => {
+  public register = () => {
     if (!this.validateForm()) {
       return;
     }
 
-    // Create loading spinner
-    this.loadingSpinner = this.loadCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loadingSpinner.present();
+    this.showLoadingSpinner();
 
     this.apiService.registerUser(this.username, this.password)
       .subscribe(
         res => {
           this.getAuthToken();
         },
-        error => this.getAuthToken()
+        error => {
+          if (error.status === 400) {
+            this.toastCtrl.create({
+              message: 'A user with that username already exists',
+              duration: 3000,
+            }).present();
+          } else {
+            this.toastCtrl.create({
+              message: 'We are experiencing technical difficulties, please try again',
+              duration: 3000,
+            }).present();
+          }
+          this.loadingSpinner.dismiss();
+        }
       );
+
+  } ;
+
+  public login = () => {
+    if (!this.validateForm()) {
+      return;
+    }
+
+    this.showLoadingSpinner();
+
+    this.getAuthToken();
   };
 
   public skipLogin = () => {
@@ -67,7 +87,20 @@ export class LoginPage {
           this.localStorage.setToken(res['token']);
           this.checkForExistingMatches(res['token']);
         },
-        error => console.log(error)
+        error => {
+          if (error.status === 400) {
+            this.toastCtrl.create({
+              message: 'Your username or password were incorrect',
+              duration: 3000,
+            }).present();
+          } else {
+            this.toastCtrl.create({
+              message: 'We are experiencing technical difficulties, please try again',
+              duration: 3000,
+            }).present();
+          }
+          this.loadingSpinner.dismiss();
+        }
       );
   };
 
@@ -95,5 +128,12 @@ export class LoginPage {
         error => console.log(error)
       );
   };
+
+  private showLoadingSpinner = () => {
+    this.loadingSpinner = this.loadCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loadingSpinner.present();
+  }
 
 }
