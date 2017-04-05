@@ -73,11 +73,12 @@ export class LocalStorage {
 
   deleteMatch = (match: Match) => {
     let matches: Match[] = this.getMatches();
-    matches.splice(matches.indexOf(match));
-
     this.clearMatches();
+
     for (let i = 0; i < matches.length; i++) {
-      this.addNewMatch(matches[i]);
+      if (matches[i].id !== match.id) {
+        this.addNewMatch(matches[i]);
+      }
     }
   };
 

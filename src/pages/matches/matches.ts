@@ -73,11 +73,11 @@ export class MatchesPage {
   };
 
   private deleteMatch = (match: Match) => {
-    // Delete the match from the current screen
-    this.matches.splice(this.matches.indexOf(match), 1);
-
     // Delete the match in local storage
     this.localStorage.deleteMatch(match);
+
+    // Delete the match from the current screen
+    this.matches = this.localStorage.getMatches();
 
     // Delete the match in the backend
     this.apiService.deleteMatch(match.id, this.localStorage.getToken())
